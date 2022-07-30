@@ -30,6 +30,7 @@ const Calendar = ({ firstDateTimestamp }) => {
 
                 return (
                   <CurrentMonthCell
+                    key={innerIndex}
                     innerIndex={innerIndex}
                     outerIndex={outerIndex}
                     firstDateTimestamp={firstDateTimestamp}
