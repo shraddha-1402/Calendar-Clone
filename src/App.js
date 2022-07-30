@@ -1,8 +1,8 @@
 import "./App.css";
 import { useState } from "react";
 import { IconButton } from "@mui/material";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import { ChevronLeftIcon, ChevronRightIcon } from "./utils/iconsExport";
+import { Calendar } from "./components";
 import { getMonthsFirstDate } from "./utils/dateFunctions";
 import { Months } from "./constants";
 
@@ -37,6 +37,7 @@ const App = () => {
           <ChevronRightIcon />
         </IconButton>
       </div>
+      <Calendar firstDateTimestamp={firstDateTimestamp} />
     </div>
   );
 };
