@@ -1,0 +1,11 @@
+.month-change-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+.month-display {
+  width: 8rem;
+  text-align: center;
+}
