@@ -10,4 +10,6 @@ const getMonthsFirstDate = (date) => {
 const daysInMonth = ({ month, year }) =>
   32 - new Date(year, month, 32).getDate();
 
-export { getMonthsFirstDate, daysInMonth };
+const getDay = ({ year, month, date }) => new Date(year, month, date).getDay();
+
+export { getMonthsFirstDate, daysInMonth, getDay };
