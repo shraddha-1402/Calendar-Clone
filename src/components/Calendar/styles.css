@@ -1,0 +1,30 @@
+.table {
+  width: 70rem;
+  text-align: center;
+  margin: 1rem;
+}
+
+.table-cell {
+  width: 10rem;
+  height: 8rem;
+}
+
+.head-cell {
+  height: 3rem;
+}
+
+.table,
+.body-cell {
+  border-collapse: collapse;
+}
+
+.body-cell {
+  border: 1px solid grey;
+  cursor: pointer;
+  position: relative;
+}
+
+.cell-date {
+  position: absolute;
+  top: 0.25rem;
+}
