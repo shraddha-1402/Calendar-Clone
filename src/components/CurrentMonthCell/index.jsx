@@ -19,7 +19,7 @@ const CurrentMonthCell = ({
   useEffect(() => {
     const list = allEvents[`${date}${month}${year}`];
     setEventList(list ? list : []);
-  }, [allEvents]);
+  }, [allEvents, date, month, year]);
 
   return (
     <td

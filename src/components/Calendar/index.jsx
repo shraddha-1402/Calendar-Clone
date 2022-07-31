@@ -11,7 +11,7 @@ const Calendar = ({ firstDateTimestamp }) => {
   const { day, month, year } = firstDateTimestamp;
   useEffect(() => {
     (async () => setAllEvents(await getEvents({ month, year })))();
-  }, [firstDateTimestamp]);
+  }, [firstDateTimestamp, month, year]);
 
   return (
     <table className="table">
