@@ -12,4 +12,13 @@ const daysInMonth = ({ month, year }) =>
 
 const getDay = ({ year, month, date }) => new Date(year, month, date).getDay();
 
-export { getMonthsFirstDate, daysInMonth, getDay };
+const isToday = ({ date, month, year }) => {
+  const today = new Date();
+  return (
+    date === today.getDate() &&
+    month === today.getMonth() &&
+    year === today.getFullYear()
+  );
+};
+
+export { getMonthsFirstDate, daysInMonth, getDay, isToday };
