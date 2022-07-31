@@ -10,7 +10,8 @@
 
 .close-icon-container {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .input-title {
@@ -23,7 +24,7 @@
 
 .input-title:focus,
 .input-textarea:focus {
-  border-color: blue;
+  border-color: var(--accent-blue);
 }
 
 .input-textarea {

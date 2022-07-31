@@ -1,0 +1,12 @@
+.event-tilte-exapansion {
+  font-size: 0.8em;
+  color: var(--accent-blue);
+}
+
+.modal-list-tile {
+  min-width: 16rem;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--accent-blue);
+  border-radius: 0.25rem;
+  margin: 0.5rem;
+}

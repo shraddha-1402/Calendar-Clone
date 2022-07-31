@@ -5,6 +5,7 @@ import { CloseIcon } from "../../utils/iconsExport";
 import { DateTimePicker } from "../DateTimePicker";
 import { Weekdays, Months } from "../../constants";
 import { getDay } from "../../utils/dateFunctions";
+import { addEvents } from "../../services/eventHandlers";
 
 const initialEventDetailsValue = {
   title: "",
@@ -20,12 +21,31 @@ const EventCreateModal = ({
   date,
   month,
   year,
+  setAllEvents,
 }) => {
   const [eventDetails, setEventDetails] = useState(initialEventDetailsValue);
 
   const handleEventSubmit = (e) => {
     e.preventDefault();
-    console.log(eventDetails);
+    const eventId = addEvents({ ...eventDetails, date, month, year });
+    if (eventId) {
+      setAllEvents((prev) =>
+        prev[`${date}${month}${year}`]
+          ? {
+              ...prev,
+              [`${date}${month}${year}`]: [
+                ...prev[`${date}${month}${year}`],
+                { data: { ...eventDetails, date, month, year }, id: eventId },
+              ],
+            }
+          : {
+              ...prev,
+              [`${date}${month}${year}`]: [
+                { data: { ...eventDetails, date, month, year }, id: eventId },
+              ],
+            }
+      );
+    }
     setEventDetails(initialEventDetailsValue);
     setOpenEventModal(false);
   };
@@ -36,7 +56,6 @@ const EventCreateModal = ({
   };
 
   const handleEventDetails = (e) => {
-    console.log(e.target.name);
     if (e.target.name === "event-reminder")
       setEventDetails((prev) => ({
         ...prev,
@@ -50,6 +69,7 @@ const EventCreateModal = ({
     <Dialog disableScrollLock open={openEventModal} onClose={handleModalClose}>
       <form onSubmit={handleEventSubmit} className="modal-card">
         <div className="close-icon-container">
+          <h3>Event Details</h3>
           <IconButton size="small" onClick={handleModalClose}>
             <CloseIcon size="small" />
           </IconButton>
@@ -114,6 +134,7 @@ const EventCreateModal = ({
           color="primary"
           size="small"
           disableElevation
+          disabled={eventDetails.title === ""}
           type="submit"
         >
           Save

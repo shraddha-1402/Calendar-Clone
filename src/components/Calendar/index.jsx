@@ -1,10 +1,18 @@
 import "./styles.css";
+import { useEffect, useState } from "react";
 import { Weekdays } from "../../constants";
 import { daysInMonth } from "../../utils/dateFunctions";
 import { CurrentMonthCell } from "../index";
+import { getEvents } from "../../services/eventHandlers";
 
 const Calendar = ({ firstDateTimestamp }) => {
+  const [allEvents, setAllEvents] = useState({});
+
   const { day, month, year } = firstDateTimestamp;
+  useEffect(() => {
+    (async () => setAllEvents(await getEvents({ month, year })))();
+  }, [firstDateTimestamp]);
+
   return (
     <table className="table">
       <thead>
@@ -30,6 +38,8 @@ const Calendar = ({ firstDateTimestamp }) => {
 
                 return (
                   <CurrentMonthCell
+                    allEvents={allEvents}
+                    setAllEvents={setAllEvents}
                     key={innerIndex}
                     innerIndex={innerIndex}
                     outerIndex={outerIndex}
