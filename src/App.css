@@ -1,3 +1,7 @@
+:root {
+  --accent-blue: rgb(37, 37, 240);
+}
+
 .month-change-container {
   display: flex;
   align-items: center;
